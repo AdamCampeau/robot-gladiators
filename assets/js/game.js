@@ -28,7 +28,26 @@ for (var i = 0; i < enemyNames.length; i++) {
     console.log(i);
     console.log(enemyNames[i] + " is at " + i + " index");    
   }
+// function to start a new game
+var startGame = function() {
+  for (var i = 0; i < enemyNames.length; i++) {
+    if (playerHealth > 0) {
+      window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
 
+      var pickedEnemyName = enemyNames[i];
+
+      enemyHealth = 50;
+
+      fight(pickedEnemyName);
+    }
+    else {
+      window.alert("You have lost your robot in battle! Game Over!");
+      break;
+    }
+  }
+  // play again
+  startGame();
+};
 // fight function
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -94,3 +113,4 @@ var fight = function(enemyName) {
 //    * Fight all enemy-robots
 //    * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
+startGame();
